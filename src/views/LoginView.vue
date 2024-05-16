@@ -9,7 +9,7 @@ const router = useRouter()
 
 const login = () => {
   axios
-    .post('http://arlindberisha-001-site1.htempurl.com/api/v1/identity/login', {
+    .post('https://arlindberisha-001-site1.htempurl.com/api/v1/identity/login', {
       email: username.value,
       password: password.value
     })

@@ -12,7 +12,7 @@ const orderDetails = ref(null)
 
 const fetchOrderDetails = async (id) => {
 	axios
-    .get(`http://arlindberisha-001-site1.htempurl.com/api/v1/orders/${id}`, {
+    .get(`https://arlindberisha-001-site1.htempurl.com/api/v1/orders/${id}`, {
       headers: {
         'Access-Control-Allow-Origin': '*',
         Authorization: `bearer ${localStorage.getItem('token')}`

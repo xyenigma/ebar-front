@@ -12,7 +12,7 @@ const router = useRouter()
 // Function to fetch orders based on the current page
 const fetchOrders = (page) => {
     axios
-        .get(`http://arlindberisha-001-site1.htempurl.com/api/v1/orders?page=${page}&pageSize=12`, {
+        .get(`https://arlindberisha-001-site1.htempurl.com/api/v1/orders?page=${page}&pageSize=12`, {
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 Authorization: `bearer ${localStorage.getItem('token')}`
