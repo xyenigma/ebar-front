@@ -29,9 +29,15 @@ router.beforeEach((to, from, next) => {
   const publicPages = ['/login']
   const authRequired = !publicPages.includes(to.path)
   const token = localStorage.getItem('token')
-  const { exp } = jwtDecode(token)
+  let loggedIn
 
-  const loggedIn = Date.now() < exp * 1000
+  if (token) {
+    const { exp } = jwtDecode(token)
+
+    loggedIn = Date.now() < exp * 1000
+  } else {
+    loggedIn = false
+  }
 
   if (authRequired && !loggedIn) {
     next('/login')
