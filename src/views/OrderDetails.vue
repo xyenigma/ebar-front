@@ -54,7 +54,7 @@ onMounted(() => {
                     <tr>
                         <!-- <th scope="col" class="px-6 py-3">Order ID</th> -->
                         <th scope="col" class="px-6 py-3">Emri i produktit</th>
-                        <th scope="col" class="px-6 py-3 hidden sm:block">Sasia</th>
+                        <th scope="col" class="px-6 py-3">Sasia</th>
                         <th scope="col" class="px-6 py-3 text-right">Totali</th>
                     </tr>
                 </thead>
@@ -64,7 +64,7 @@ onMounted(() => {
                         <td class="px-6 py-4">
                             {{ product.productName }}
                         </td>
-                        <td class="px-6 py-4 hidden sm:block">{{ product.quantity }} pcs</td>
+                        <td class="px-6 py-4">{{ product.quantity }} pcs</td>
                         <td class="px-6 py-4 text-right">{{ product.totalPrice }} €</td>
                     </tr>
                 </tbody>

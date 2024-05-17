@@ -6,6 +6,7 @@ import { parseISO, format } from 'date-fns'
 
 const orders = ref([])
 const pages = ref(1)
+const dayTotal = ref(0)
 const curr = ref(1)
 const router = useRouter()
 
@@ -21,6 +22,7 @@ const fetchOrders = (page) => {
         .then(({ data }) => {
             orders.value = data.orders
             pages.value = data.totalPages
+            dayTotal.value = data.totalAmount
         })
 }
 
@@ -69,7 +71,11 @@ const visiblePages = computed(() => {
 
 <template>
     <main class="max-w-screen-xl mx-auto px-4 my-6">
-        <p class="text-4xl mb-5">Porositë</p>
+        <div class="flex justify-between">
+
+            <p class="text-4xl mb-5">Porositë</p>
+            <p class="text-2xl mb-5 text-primary-500">{{dayTotal}} €</p>
+        </div>
         <div class="relative overflow-x-auto sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -83,7 +89,8 @@ const visiblePages = computed(() => {
                 </thead>
                 <tbody>
                     <tr v-for="order in orders" :key="order.orderId" @click="router.push(`/orders/${order.orderId}`)"
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer">
+                        :class="order.isSettled ? 'text-red-500' : 'text-green-500'"
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer text-red-500">
                         <!-- <th
               scope="row"
               class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
